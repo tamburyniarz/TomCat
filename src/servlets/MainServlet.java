@@ -22,17 +22,9 @@ public class MainServlet extends HttpServlet {
       String n2 = request.getParameter("n2");
       String n3 = request.getParameter("n3");
 
-      float avar = 0.0f;
-      avar += Integer.parseInt(n1);
-      avar += Integer.parseInt(n2);
-      avar += Integer.parseInt(n3);
-      avar /= 3;
-      
-      final int SIZE = 3;
-      String[] stringArray = new String[SIZE];
       
       out.println("Wczytanie 3 liczb z zadania :");
-      out.println("Srednia: " + avar);
+      out.println("Srednia: ");
   }
     
     public void doPost(HttpServletRequest request,
