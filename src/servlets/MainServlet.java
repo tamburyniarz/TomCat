@@ -8,21 +8,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ServletsMain extends HttpServlet {
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+import com.sun.xml.internal.fastinfoset.util.StringArray;
+
+public class MainServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
  
     public void doGet(HttpServletRequest request,
             HttpServletResponse response)    throws ServletException, IOException {
       PrintWriter out = response.getWriter();
 
-      String parametr1 = request.getParameter("parametr1");
-      String parametr2 = request.getParameter("parametr2");
-      String parametr3 = request.getParameter("parametr3");
+      String n1 = request.getParameter("n1");
+      String n2 = request.getParameter("n2");
+      String n3 = request.getParameter("n3");
 
-      out.println("Wczytanie 3 parametrow z zadania :");
-      out.println(parametr1);
-      out.println(parametr2);
-      out.println(parametr3);
+      float avar = 0.0f;
+      avar += Integer.parseInt(n1);
+      avar += Integer.parseInt(n2);
+      avar += Integer.parseInt(n3);
+      avar /= 3;
+      
+      final int SIZE = 3;
+      String[] stringArray = new String[SIZE];
+      
+      out.println("Wczytanie 3 liczb z zadania :");
+      out.println("Srednia: " + avar);
   }
     
     public void doPost(HttpServletRequest request,

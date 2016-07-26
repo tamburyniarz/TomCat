@@ -20,7 +20,7 @@
        testPackage.TestServlet -->
   <servlet>
     <servlet-name>Main</servlet-name>
-    <servlet-class>servlets.ServletsMain</servlet-class>
+    <servlet-class>servlets.MainServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Main</servlet-name>
