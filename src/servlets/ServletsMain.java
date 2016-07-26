@@ -11,8 +11,27 @@ import javax.servlet.http.HttpServletResponse;
 public class ServletsMain extends HttpServlet {
     private static final long serialVersionUID = 1L;
  
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request,
+            HttpServletResponse response)    throws ServletException, IOException {
+      PrintWriter out = response.getWriter();
+
+      String parametr1 = request.getParameter("parametr1");
+      String parametr2 = request.getParameter("parametr2");
+      String parametr3 = request.getParameter("parametr3");
+
+      out.println("Wczytanie 3 parametrow z zadania :");
+      out.println(parametr1);
+      out.println(parametr2);
+      out.println(parametr3);
+  }
+    
+    public void doPost(HttpServletRequest request,
+            HttpServletResponse response)   throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        out.print("Hello World");
+     
+        out.println("Wczytanie 3 parametrow z zadania :");
+        out.println(request.getParameter("parametr1"));
+        out.println(request.getParameter("parametr2"));
+        out.println(request.getParameter("parametr3"));
     }
 }
