@@ -16,4 +16,12 @@
     <servlet-name>RemoveRecordServlet</servlet-name>
     <url-pattern>/RemoveRecordServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>SelectRecordServlet</servlet-name>
+    <servlet-class>servlets.SelectRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectRecordServlet</servlet-name>
+    <url-pattern>/SelectRecordServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

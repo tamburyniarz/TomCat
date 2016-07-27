@@ -2,6 +2,7 @@ package Other;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -67,6 +68,27 @@ public class ArticleDAO {
            System.err.println("Blad przy usuwaniu tabeli");
     	   e.printStackTrace();
        }
+   }
+
+   public String select(Article article) {
+	   String record = "";
+       query = sqlArticleParser.createSelectQuery(article);
+       try {
+    	   ResultSet result = statement.executeQuery(query);
+    	   while(result.next()){
+    		   int id = result.getInt("id");
+    		   String title = result.getString("title");
+    		   String description = result.getString("description");
+    		   
+    		   record += "ID: " + id + "\n"
+    		   		+ "Title: " + title +"\n"
+    		   		+ "Description: " + description;
+    	   }
+       } catch (SQLException e) {
+           System.err.println("Blad przy usuwaniu tabeli");
+    	   e.printStackTrace();
+       }
+       return record;
    }
    
    public boolean createTables()  {

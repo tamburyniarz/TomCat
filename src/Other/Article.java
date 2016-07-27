@@ -4,13 +4,15 @@ import java.sql.Date;
 
 public class Article {
 	
+	private int id;
 	private String tite;
 	private String text;
 	private Date date;
 
+
 	@Override
 	public String toString() {
-		return "Article [tite=" + tite + ", text=" + text + "]";
+		return "Article [id=" + id + ", tite=" + tite + ", text=" + text + ", date=" + date + "]";
 	}
 	/*
 	 * 
@@ -34,6 +36,12 @@ public class Article {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 }

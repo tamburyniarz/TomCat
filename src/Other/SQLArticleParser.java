@@ -16,6 +16,20 @@ public class SQLArticleParser {
         return query;
 	}
 	
+	public String createSelectQuery(Article article) {
+		String query = "";
+		 
+        /**
+         * Dodaj do tabeli "articles" wartoœci id, title i text.
+         * id jest nullem, poniewa¿ pole id jest autoinkrementowane
+         * przez bazê danych.
+         * INSERT INTO articles VALUES (NULL, 'title', 'text');
+         */
+        query = "SELECT * FROM articles WHERE id=" + article.getId();
+        System.out.println(query);
+        return query;
+	}
+	
 	public String createRemoveQuery(Article article) {
 		String query = "";
 		 

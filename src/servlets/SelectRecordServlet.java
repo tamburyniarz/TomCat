@@ -14,19 +14,18 @@ import Other.ArticleDAO;
 import Other.ArticleParser;
 
 /**
- * Servlet implementation class RemoveRecordServlet
+ * Servlet implementation class SelectRecordServlet
  */
-@WebServlet("/RemoveRecordServlet")
-public class RemoveRecordServlet extends HttpServlet {
+@WebServlet("/SelectRecordServlet")
+public class SelectRecordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	private ArticleParser articleParser;
 	private ArticleDAO articleDAO;
-	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RemoveRecordServlet() {
+    public SelectRecordServlet() {
 		articleParser = new ArticleParser();
 		articleDAO = new ArticleDAO();
     }
@@ -36,10 +35,9 @@ public class RemoveRecordServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		PrintWriter out = response.getWriter();
 
-	    out.println("Remove article:");
+	    out.println("Selected item:");
 	}
 
 	/**
@@ -52,11 +50,10 @@ public class RemoveRecordServlet extends HttpServlet {
 		Article article = articleParser.parseArticleFromRequest(request);
 		PrintWriter out = response.getWriter();
 		
-		out.println(article);
-		//zapisz artyku³ do bazy danych
-		//articleDAO.save(article);
         articleDAO.Connect();
-        articleDAO.remove(article);
+        String selected_item = articleDAO.select(article);
+
+	    out.println(selected_item);
         articleDAO.closeConnection();
 	}
 
