@@ -49,6 +49,7 @@ public class GetArticleServlet extends HttpServlet {
 		//articleDAO.save(article);
         articleDAO.Connect();
         articleDAO.createTables();
+        articleDAO.save(article);
         articleDAO.closeConnection();
 	}
 

@@ -29,7 +29,7 @@ public class ArticleDAO {
 
    public ArticleDAO() {
        //inicjalizacja parserów
-       //sqlArticleParser = new SQLArticleParser();
+       sqlArticleParser = new SQLArticleParser();
    }
    
    public void Connect(){
@@ -50,18 +50,25 @@ public class ArticleDAO {
    }
 
    public void save(Article article) {
+//       query = "insert into articles (title,description) values (\"Pan Tadeusz 2\",\"Adam Mickiewicz\");";
        query = sqlArticleParser.createSaveQuery(article);
-
        try {
-           Class.forName(DBDRIVER).newInstance();
-           connection = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-           statement = connection.createStatement();
-           statement.executeUpdate(query);
-
-                       //zwolnienie zasobów i zamkniêcie po³¹czenia
-                       statement.close();
-                       connection.close();
+    	   statement.execute(query);
+       } catch (SQLException e) {
+           System.err.println("Blad przy tworzeniu tabeli");
+    	   e.printStackTrace();
        }
+//
+//       try {
+//           Class.forName(DBDRIVER).newInstance();
+//           connection = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
+//           statement = connection.createStatement();
+//           statement.executeUpdate(query);
+//
+//                       //zwolnienie zasobów i zamkniêcie po³¹czenia
+//                       statement.close();
+//                       connection.close();
+//       }
    }
    
    public boolean createTables()  {

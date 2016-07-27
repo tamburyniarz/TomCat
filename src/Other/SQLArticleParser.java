@@ -11,7 +11,7 @@ public class SQLArticleParser {
          * przez bazê danych.
          * INSERT INTO articles VALUES (NULL, 'title', 'text');
          */
-        //query = "INSERT INTO articles VALUES (NULL, '" + article.getTite() + "', '" + article.getText() +"');";
+        query = "INSERT INTO articles VALUES (NULL, '" + article.getTite() + "', '" + article.getText() +"');";
  
         return query;
 	}
