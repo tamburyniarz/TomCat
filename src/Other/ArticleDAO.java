@@ -50,7 +50,6 @@ public class ArticleDAO {
    }
 
    public void save(Article article) {
-//       query = "insert into articles (title,description) values (\"Pan Tadeusz 2\",\"Adam Mickiewicz\");";
        query = sqlArticleParser.createSaveQuery(article);
        try {
     	   statement.execute(query);
@@ -58,17 +57,16 @@ public class ArticleDAO {
            System.err.println("Blad przy tworzeniu tabeli");
     	   e.printStackTrace();
        }
-//
-//       try {
-//           Class.forName(DBDRIVER).newInstance();
-//           connection = DriverManager.getConnection(DBURL, DBUSER, DBPASS);
-//           statement = connection.createStatement();
-//           statement.executeUpdate(query);
-//
-//                       //zwolnienie zasobów i zamkniêcie po³¹czenia
-//                       statement.close();
-//                       connection.close();
-//       }
+   }
+
+   public void remove(Article article) {
+       query = sqlArticleParser.createRemoveQuery(article);
+       try {
+    	   statement.execute(query);
+       } catch (SQLException e) {
+           System.err.println("Blad przy usuwaniu tabeli");
+    	   e.printStackTrace();
+       }
    }
    
    public boolean createTables()  {
@@ -85,6 +83,7 @@ public class ArticleDAO {
    
    public void closeConnection() {
        try {
+    	   statement.close();
            connection.close();
        } catch (SQLException e) {
            System.err.println("Problem z zamknieciem polaczenia");

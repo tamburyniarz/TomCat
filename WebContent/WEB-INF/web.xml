@@ -6,6 +6,14 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetArticleServlet</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>/GetArticleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RemoveRecordServlet</servlet-name>
+    <servlet-class>servlets.RemoveRecordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveRecordServlet</servlet-name>
+    <url-pattern>/RemoveRecordServlet</url-pattern>
   </servlet-mapping>
 </web-app>

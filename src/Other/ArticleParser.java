@@ -10,7 +10,6 @@ public class ArticleParser {
 		
 		Article article = new Other.Article();
 		
-		article.setId(Integer.parseInt(request.getParameter("id")));
 		article.setTite(request.getParameter("title"));
 		article.setText(request.getParameter("text"));
 		return article;

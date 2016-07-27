@@ -9,47 +9,55 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Other.ArticleParser;
-import model.Biblioteka;
 import Other.Article;
 import Other.ArticleDAO;
+import Other.ArticleParser;
 
 /**
- * Servlet implementation class GetArticleServlet
+ * Servlet implementation class RemoveRecordServlet
  */
-@WebServlet("/GetArticleServlet")
-public class GetArticleServlet extends HttpServlet {
+@WebServlet("/RemoveRecordServlet")
+public class RemoveRecordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
 	private ArticleParser articleParser;
 	private ArticleDAO articleDAO;
-
-	public GetArticleServlet() {
+	
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RemoveRecordServlet() {
 		articleParser = new ArticleParser();
 		articleDAO = new ArticleDAO();
-	}
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
 		PrintWriter out = response.getWriter();
 
-	    out.println("Add aArticle:");
+	    out.println("Remove article:");
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
+		
 		//Wykorzystaj parser do artyku³ów i pobierz artyku³ z requesta
 		Article article = articleParser.parseArticleFromRequest(request);
 		PrintWriter out = response.getWriter();
-	     
-        out.println(article);
+		
+		out.println(article);
 		//zapisz artyku³ do bazy danych
 		//articleDAO.save(article);
         articleDAO.Connect();
-        articleDAO.createTables();
-        articleDAO.save(article);
+        articleDAO.remove(article);
         articleDAO.closeConnection();
 	}
 

@@ -4,26 +4,19 @@ import java.sql.Date;
 
 public class Article {
 	
-	private int id;
 	private String tite;
 	private String text;
 	private Date date;
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", tite=" + tite + ", text=" + text + "]";
+		return "Article [tite=" + tite + ", text=" + text + "]";
 	}
 	/*
 	 * 
 	 *  Getterss and setters
 	 * 
 	 */
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getTite() {
 		return tite;
 	}
