@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Other.ArticleParser;
+import model.Biblioteka;
 import Other.Article;
 import Other.ArticleDAO;
 
@@ -25,7 +26,7 @@ public class GetArticleServlet extends HttpServlet {
 
 	public GetArticleServlet() {
 		articleParser = new ArticleParser();
-		// articleDAO = new ArticleDAO();
+		articleDAO = new ArticleDAO();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,7 +46,10 @@ public class GetArticleServlet extends HttpServlet {
 	     
         out.println(article);
 		//zapisz artyku³ do bazy danych
-		articleDAO.save(article);
+		//articleDAO.save(article);
+        articleDAO.Connect();
+        articleDAO.createTables();
+        articleDAO.closeConnection();
 	}
 
 }

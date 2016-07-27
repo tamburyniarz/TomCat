@@ -12,9 +12,7 @@ import java.util.List;
 public class Biblioteka {
 	public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static final String DB_URL = "jdbc:mysql://localhost:3306/db";
-    
-//    public static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/biblioteka.db";
- 
+   
     private Connection conn;
     private Statement stat;
  
@@ -33,7 +31,7 @@ public class Biblioteka {
             System.err.println("Problem z otwarciem polaczenia");
             e.printStackTrace();
         }
- 
+        
         createTables();
     }
  

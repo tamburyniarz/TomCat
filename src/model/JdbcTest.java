@@ -3,16 +3,16 @@ package model;
 import java.util.List;
 
 public class JdbcTest {
- 
-    public static void main(String[] args) {
-    	run();
+	
+	public static void main(String[] args) {
+        run();
     }
 
     private static void run(){
         Biblioteka b = new Biblioteka();
-        b.insertCzytelnik("Karol", "Maciaszek", "92873847182");
-        b.insertCzytelnik("Piotr", "Wojtecki", "89273849128");
-        b.insertCzytelnik("Abdul", "Dabdul", "");
+        b.insertCzytelnik("Karol", "Maciaszek", "23");
+        b.insertCzytelnik("Piotr", "Wojtecki", "12");
+        b.insertCzytelnik("Abdul", "Dabdul", "1");
  
         b.insertKsiazka("Cieñ Wiatru", "Carlos Ruiz Zafon");
         b.insertKsiazka("W pustyni i w puszczy", "Henryk Sienkiewicz");

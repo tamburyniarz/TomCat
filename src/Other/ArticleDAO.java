@@ -2,7 +2,10 @@ package Other;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
+
+import model.Biblioteka;
 
 public class ArticleDAO {
 
@@ -10,7 +13,7 @@ public class ArticleDAO {
     * Tutaj nale¿y zdefiniowaæ u¿ytkownika, has³o, adres oraz
     * sterownik do bazy danych z któr¹ zamierzamy siê po³¹czyæ.
     */
-   private final static String DBURL = "jdbc:mysql://127.0.0.1:3306";
+   private final static String DBURL = "jdbc:mysql://127.0.0.1:3306/db";
    private final static String DBUSER = "root";
    private final static String DBPASS = "koliko";
    private final static String DBDRIVER = "com.mysql.jdbc.Driver";
@@ -26,7 +29,24 @@ public class ArticleDAO {
 
    public ArticleDAO() {
        //inicjalizacja parserów
-       sqlArticleParser = new SQLArticleParser();
+       //sqlArticleParser = new SQLArticleParser();
+   }
+   
+   public void Connect(){
+       try {
+           Class.forName(ArticleDAO.DBDRIVER);
+       } catch (ClassNotFoundException e) {
+           System.err.println("Brak sterownika JDBC");
+           e.printStackTrace();
+       }
+
+       try {
+           connection = DriverManager.getConnection(DBURL,DBUSER,DBPASS);
+           statement = connection.createStatement();
+       } catch (SQLException e) {
+           System.err.println("Problem z otwarciem polaczenia");
+           e.printStackTrace();
+       }
    }
 
    public void save(Article article) {
@@ -41,6 +61,27 @@ public class ArticleDAO {
                        //zwolnienie zasobów i zamkniêcie po³¹czenia
                        statement.close();
                        connection.close();
+       }
+   }
+   
+   public boolean createTables()  {
+       String createArticle = "CREATE TABLE IF NOT EXISTS `articles` (`id` INTEGER PRIMARY KEY AUTO_INCREMENT, `title` varchar(255), `description` varchar(255))";
+       try {
+           statement.execute(createArticle);
+       } catch (SQLException e) {
+           System.err.println("Blad przy tworzeniu tabeli");
+           e.printStackTrace();
+           return false;
+       }
+       return true;
+   }
+   
+   public void closeConnection() {
+       try {
+           connection.close();
+       } catch (SQLException e) {
+           System.err.println("Problem z zamknieciem polaczenia");
+           e.printStackTrace();
        }
    }
    
