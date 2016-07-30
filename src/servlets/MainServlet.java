@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-import com.sun.xml.internal.fastinfoset.util.StringArray;
+
 
 public class MainServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -17,12 +16,6 @@ public class MainServlet extends HttpServlet {
     public void doGet(HttpServletRequest request,
             HttpServletResponse response)    throws ServletException, IOException {
       PrintWriter out = response.getWriter();
-
-      String n1 = request.getParameter("n1");
-      String n2 = request.getParameter("n2");
-      String n3 = request.getParameter("n3");
-
-      
       out.println("Wczytanie 3 liczb z zadania :");
       out.println("Srednia: ");
   }
